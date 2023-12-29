@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Login</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+  <!-- New styles -->
+  <style>
+    body {
+      background-image: url('{% static "admin2.png" %}');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-attachment: fixed; /* Fixed background image */
+      background-color: #f8f9fa; /* Fallback color in case the image is not available */
+    }
+
+    .container {
+      max-width: 400px;
+      margin-top: 50px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.8); /* Add transparency to the container background */
+    }
+
+    h1 {
+      color: #007bff;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      font-weight: bold;
+    }
+
+    input {
+      border-radius: 5px;
+      padding: 10px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .btn-primary {
+      background-color: #007bff;
+      border: 1px solid #007bff;
+    }
+
+    .btn-primary:hover {
+      background-color: #0056b3;
+      border: 1px solid #0056b3;
+    }
+
+    .error {
+      color: #dc3545;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Add an image -->
+    <img src="{% static 'admin3.png' %}" alt="Your Image" class="img-fluid mb-3">
+
+    <h1 class="text-center">Admin Login</h1>
+    {% if error_message %}
+    <p class="error">{{ error_message }}</p>
+    {% endif %}
+    <form method='post'>
+      {% csrf_token %}
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" class="form-control" id="username" name="username" placeholder="Enter username">
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" id="password" name="password" placeholder="Enter password">
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

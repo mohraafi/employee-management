@@ -1,0 +1,1026 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title> Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/fontawesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/all.min.css">
+
+
+    <style>
+      :root {
+    --primary-color: #5B25F5;
+    --secondary-color: #9792c7;
+    --secondary-color-with-opacity: #bab4e21f;
+    --background-color: #F5F5FD;
+    --background-color-hover: #e5e5ec;
+    --text: #9792c7;
+    --white: #fff;
+    --black: #000;
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--white);
+    color: var(--primary-color);
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+}
+
+.navbar {
+    background-color: #fff;
+    height: 100%;
+    display: flex;
+    position: fixed;
+    flex-direction: column;
+    padding: 1.563em;
+    font-weight: 600;
+    width: 18.75em;
+    box-sizing: border-box;
+    justify-content: space-between;
+}
+
+.navbar-brand {
+    padding: 2.188em 0em 2em 1em;
+    text-decoration: none;
+    color: var(--secondary-color);
+}
+
+.navbar-brand .icon-container {
+    width: 2em;
+    height: 2em;
+    border-radius: 0.8em;
+    margin-bottom: .5em;
+    padding: 0.5em;
+    background-color: var(--primary-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.navbar-brand .icon {
+    width: 2em;
+    height: 2em;
+    background-color: #fff;
+}
+
+.navbar-brand .icon.hexagon {
+    -webkit-mask: url(https://ozcanzaferayan.github.io/financial-crm/icon/hexagon.svg) no-repeat center;
+    mask: url(https://ozcanzaferayan.github.io/financial-crm/icon/hexagon.svg) no-repeat center;
+}
+
+.navbar-brand .name {
+    padding-top: 0.5em;
+}
+
+ul.navbar-nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.navbar-nav a {
+    display: flex;
+    color: var(--secondary-color);
+    padding: 1em;
+    text-decoration: none;
+    align-items: center;
+    cursor: pointer;
+}
+
+.navbar-nav a.active {
+    color: var(--primary-color)
+}
+
+.navbar-nav a:not(.active):hover {
+    background-color: var(--background-color-hover);
+}
+
+.navbar-nav .active .icon {
+    background-color: var(--primary-color);
+    width: 2em;
+    height: 2em;
+}
+
+.icon {
+    background-color: var(--secondary-color);
+    width: 2em;
+    height: 2em;
+}
+
+.navbar-nav img {
+    margin-right: .5em;
+}
+
+
+/* Bottombar icons */
+
+.navbar-nav .icon.home {
+    -webkit-mask: url(https://ozcanzaferayan.github.io/financial-crm/icon/home.svg) no-repeat center;
+    mask: url(https://ozcanzaferayan.github.io/financial-crm/icon/home.svg) no-repeat center;
+}
+
+.navbar-nav .icon.statistics {
+    -webkit-mask: url(https://ozcanzaferayan.github.io/financial-crm/icon/bar-chart-2.svg) no-repeat center;
+    mask: url(https://ozcanzaferayan.github.io/financial-crm/icon/bar-chart-2.svg) no-repeat center;
+}
+
+.navbar-nav .icon.mail {
+    -webkit-mask: url(https://ozcanzaferayan.github.io/financial-crm/icon/mail.svg) no-repeat center;
+    mask: url(https://ozcanzaferayan.github.io/financial-crm/icon/mail.svg) no-repeat center;
+}
+
+.navbar-nav .icon.user {
+    -webkit-mask: url(https://ozcanzaferayan.github.io/financial-crm/icon/user.svg) no-repeat center;
+    mask: url(https://ozcanzaferayan.github.io/financial-crm/icon/user.svg) no-repeat center;
+}
+
+.navbar-nav .icon.file {
+    -webkit-mask: url(https://ozcanzaferayan.github.io/financial-crm/icon/file.svg) no-repeat center;
+    mask: url(https://ozcanzaferayan.github.io/financial-crm/icon/file.svg) no-repeat center;
+}
+
+.navbar-footer .image-documents {
+    width: 100%;
+    margin-bottom: -8em;
+    position: relative;
+    z-index: 1
+}
+
+.navbar-footer .container {
+    background-color: var(--background-color);
+    margin: .5em;
+    padding: 1.688em;
+    padding-top: 6em;
+    display: flex;
+    flex-direction: column;
+    font-weight: normal;
+    border-radius: 1.3em;
+    position: relative;
+    bottom: 0;
+    box-sizing: border-box;
+}
+
+.navbar-footer h2 {
+    margin-bottom: 0.25em;
+    color: var(--black);
+}
+
+.navbar-footer span {
+    color: var(--text);
+    font-size: .8em;
+}
+
+.navbar-footer a {
+    color: var(--white);
+    background-color: var(--primary-color);
+    text-decoration: none;
+    text-align: center;
+    padding: 1em;
+    border-radius: 1.3em;
+    margin-top: 1em;
+}
+
+@media screen and (max-width: 768px) {
+    /* Tablet (768px) */
+    .navbar {
+        bottom: 0;
+        width: 100%;
+        height: auto;
+        padding: 0.1em;
+        position: fixed;
+        margin: 0;
+        border-top: 1px solid var(--background-color);
+    }
+    .navbar-brand {
+        display: none;
+    }
+    .navbar-nav {
+        display: flex;
+        width: 100%;
+        height: auto;
+        justify-content: space-around;
+    }
+    .navbar-nav a {
+        float: left;
+        font-size: 0.8em;
+        padding: 1em 0.5em;
+    }
+    .navbar-nav .icon {
+        width: 2em;
+        height: 2em;
+    }
+    .navbar-nav img {
+        margin-right: .5em;
+    }
+    .navbar-footer {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    /* Phone (Large)*/
+    .navbar-nav {
+        position: relative;
+        bottom: 0;
+        display: flex;
+        justify-content: space-around;
+    }
+    .navbar-nav a {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    /* Phone (Small) */
+    .navbar-nav span {
+        display: none;
+    }
+}
+/*HEADER*/
+main {
+    margin-top: 1em;
+    margin-right: 1em;
+    border-radius: 2.5em;
+    margin-left: 18.75em;
+    width: 100%;
+    height: 100%;
+    background-color: var(--background-color);
+    padding: 2.3em;
+}
+
+main header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+main header .icon.search {
+    -webkit-mask: url(https://ozcanzaferayan.github.io/financial-crm/icon/search.svg) no-repeat center;
+    mask: url(https://ozcanzaferayan.github.io/financial-crm/icon/search.svg) no-repeat center;
+}
+
+main header .form-inline {
+    display: flex;
+    width: 100%;
+}
+
+main header input[type="search"] {
+    border: none;
+    background: none;
+    margin-left: 0.5em;
+    outline: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    width: 100%;
+  
+}
+
+main header button {
+    display: flex;
+    align-items: center;
+    background: none;
+    border: 2px solid;
+    border-color: var(--secondary-color-with-opacity);
+    outline: none;
+    border-radius: 0.8em;
+    padding: .8em 1.2em;
+    color: var(--text);
+    font-weight: 600;
+}
+
+main header button.change-view {
+    margin-right: 1.2em;
+}
+
+main header button.notification {
+    border: none;
+}
+
+main header button.menu {
+    border: none;
+}
+
+main header .change-view .icon {
+    margin-right: 0.5em;
+}
+
+main header .icon.search {
+    -webkit-mask: url(https://ozcanzaferayan.github.io/financial-crm/icon/search.svg) no-repeat center;
+    mask: url(https://ozcanzaferayan.github.io/financial-crm/icon/search.svg) no-repeat center;
+}
+
+main header section[role="application"] {
+    display: flex;
+}
+
+main header .icon.layout {
+    -webkit-mask: url(https://ozcanzaferayan.github.io/financial-crm/icon/layout.svg) no-repeat center;
+    mask: url(https://ozcanzaferayan.github.io/financial-crm/icon/layout.svg) no-repeat center;
+}
+
+main header .icon.notification {
+    -webkit-mask: url(https://ozcanzaferayan.github.io/financial-crm/icon/bell.svg) no-repeat center;
+    mask: url(https://ozcanzaferayan.github.io/financial-crm/icon/bell.svg) no-repeat center;
+}
+
+main header .icon.menu {
+    -webkit-mask: url(https://ozcanzaferayan.github.io/financial-crm/icon/menu.svg) no-repeat center;
+    mask: url(https://ozcanzaferayan.github.io/financial-crm/icon/menu.svg) no-repeat center;
+}
+
+main h1 {
+    font-size: 3em;
+    color: var(--black);
+    margin-top: 0;
+}
+
+@media screen and (max-width: 768px) {
+    /* Tablet (768px) */
+    main {
+        margin-left: 0;
+        border-radius: 0;
+        margin: 0;
+        padding: 0em;
+    }
+    main header {
+        margin-bottom: 0em;
+        padding: 1em;
+    }
+    main header button.change-view {
+        display: none;
+    }
+    main h1 {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    /* Phone (Large)*/
+}
+
+@media screen and (max-width: 320px) {
+    /* Phone (Small) */
+    main header button {
+        padding: 0em 1.2em;
+    }
+    main header {
+        padding: 0.5em 0.7em;
+    }
+}
+/*CHARTS*/.charts-wrapper {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+main section[role="credit-card"] {
+    width: 310px;
+    height: 210px;
+    background-color: var(--primary-color);
+    border-radius: 2em;
+    position: relative;
+    margin-left: -4em;
+    margin-bottom: 1em;
+    padding: 2em;
+    box-sizing: border-box;
+    -webkit-box-shadow: 10px 10px 46px -6px rgba(104, 87, 150, 1);
+    -moz-box-shadow: 10px 10px 46px -6px rgba(104, 87, 150, 1);
+    box-shadow: 10px 10px 46px -6px rgba(104, 87, 150, 1);
+}
+
+main section[role="credit-card"] img {
+    width: 4em;
+    height: 100%;
+}
+
+main section[role="credit-card"] img.apple_pay {
+    width: 3em;
+}
+
+main section[role="credit-card"] .top {
+    display: flex;
+    justify-content: space-between;
+}
+
+main section[role="credit-card"] .ccNumber {
+    margin-top: 1.3em;
+    display: flex;
+    justify-content: space-between;
+    color: var(--white);
+    font-family: monospace;
+    font-size: 1.2rem;
+}
+
+.ccBottom {
+    margin-top: 1.2em;
+    display: flex;
+    justify-content: space-between;
+    color: var(--white);
+}
+
+.ccValidThru,
+.ccCardHolder {
+    display: flex;
+    flex-direction: column;
+}
+
+.ccCardHolder {
+    margin-right: 1em;
+}
+
+.ccBottom label {
+    opacity: .5;
+    font-size: .7em;
+}
+
+main section[role="chart"] {
+    width: 100%;
+    margin-left: 1em;
+    height: 18em;
+    background-color: var(--white);
+    border-radius: 2em;
+    margin-bottom: 1em;
+    padding: 2em;
+    padding-bottom: 5em;
+    box-sizing: border-box;
+}
+
+section[role="chart"] .title {
+    color: var(--black);
+    font-weight: 700;
+    margin-top: 0;
+}
+
+main section[role="chart"].exchange-rates {
+    width: calc(100% - 270px);
+}
+
+main section[role="chart"].last-costs {
+    width: calc(100% - 350px);
+}
+
+main section[role="chart"].efficiency {
+    width: 310px;
+}
+
+@media screen and (max-width: 1024px) {
+    /* Laptop (1024px) */
+    main section[role="chart"].efficiency {
+        width: 170px;
+    }
+    main section[role="chart"].last-costs {
+        width: calc(100% - 210px);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    /* Tablet (768px) */
+    main section[role="credit-card"] {
+        margin-left: 0;
+    }
+    .charts-wrapper {
+        flex-direction: column;
+    }
+    main section[role="chart"].exchange-rates,
+    main section[role="chart"].last-costs,
+    main section[role="chart"].efficiency {
+        margin-left: 0;
+        width: 100%;
+        padding: 2em;
+        border-radius: 0;
+        padding-bottom: 5em;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    main section[role="chart"].exchange-rates,
+    main section[role="chart"].last-costs,
+    main section[role="chart"].efficiency {
+        padding: 0.5em;
+        padding-bottom: 3em;
+    }
+    main section[role="chart"].efficiency {
+        margin-bottom: 5em;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    /* Phone (Small) */
+    main section[role="credit-card"] {
+        width: 100%;
+        padding: 0.75em;
+        margin-bottom: 0.75em;
+        border-radius: 0;
+        height: initial;
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+    }
+    main section[role="credit-card"] img {
+        width: 2em;
+    }
+    main section[role="credit-card"] img.apple_pay {
+        width: 2em;
+    }
+    main section[role="credit-card"] .ccNumber {
+        margin-top: 0.7em;
+    }
+    .ccBottom {
+        margin-top: 0.7em;
+    }
+    section[role="chart"] .title {
+        margin-bottom: 0.2em;
+    }
+    main section[role="chart"].exchange-rates,
+    main section[role="chart"].last-costs,
+    main section[role="chart"].efficiency {
+        height: 12em;
+    }
+}
+    /* Style for the dropdown container */
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    /* Style for the dropdown content */
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      min-width: 160px;
+      box-shadow:10px 10px 46px -6px rgba(104, 87, 150, 1);
+      z-index: 1;
+    }
+
+    /* Style for the dropdown links */
+    .dropdown-content a {
+      color:10px 10px 46px -6px rgba(104, 87, 150, 1);
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+
+    /* Change color on hover */
+    .dropdown-content a:hover {
+      background-color: #f1f1f1;
+    }
+
+    /* Show the dropdown menu on hover */
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    /* Style for the active link */
+   
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      min-width: 160px;
+      box-shadow: 10px 10px 46px -6px rgb(52, 34, 99);
+      z-index: 1;
+    }
+
+    .dropdown-content a {
+      color: 10px 10px 46px -6px rgb(65, 41, 129);
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #f1f1f1;
+    }
+
+    /* Styles for the icon and text */
+    .icon {
+      /* Add your icon styles here */
+      width: 50px; /* Adjust as needed */
+      height: 20px; /* Adjust as needed */
+      margin-right: 100x;
+    }
+    #pagination-container {
+  margin-top: 20px;
+  display: flex;
+  list-style: none;
+  padding: 0;
+}
+
+#pagination-container a {
+  text-decoration: none;
+  padding: 8px;
+  margin: 2px;
+  border: 1px solid #ddd;
+  color: #333;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#pagination-container a:hover {
+  background-color: #ddd;
+}
+
+#pagination-container a.active {
+  background-color: #5B25F5;
+  color: white;
+}
+
+main {
+    margin-top: 1em;
+    margin-right: 1em;
+    border-radius: 2.5em;
+    margin-left: 18.75em;
+    width: calc(100% - 18.75em); /* Adjusted width for the main content */
+    min-height: 100vh; /* Ensures the content takes at least the full height of the viewport */
+    background-color: var(--background-color);
+    padding: 2.3em;
+    box-sizing: border-box;
+}
+
+@media screen and (max-width: 768px) {
+    main {
+        margin-left: 0;
+        border-radius: 0;
+        margin: 0;
+        padding: 0em;
+    }
+}
+table {
+    width: 100%; /* Makes the table take up 100% of its container */
+    border-collapse: collapse;
+    margin-top: 1em; /* Adjusted margin for better spacing */
+}
+
+th, td {
+    padding: 1em; /* Adjusted padding for better spacing */
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+@media screen and (max-width: 768px) {
+    table {
+        width: 100%;
+    }
+
+    th, td {
+        padding: 0.5em;
+        font-size: 0.9em;
+    }
+}
+
+
+    </style>
+</head>
+<body>
+  
+    <nav class="navbar">
+        
+        <ul class="navbar-nav">
+            <li>
+                <a class="active" href="{% url 'admin-dashboard' %}"><span>   DASHBOARD</span></a>
+            </li>
+            
+            <li class="dropdown">
+                <a class="active" href=""><img class="icon home" src="path/to/your/icon.png" /><span>DEPARTMENT</span></a>
+                <div class="dropdown-content">
+                <!-- Dropdown options -->
+                <a href="{% url 'adddepartment' %}">ADD DEPARTMENT</a>
+                <a href="{% url 'managedepartment' %}">MANAGE DEPARTMENT</a>
+               
+                </div>
+             </li>
+            </li>
+            <li class="dropdown">
+               <a class="active" href="#"><img class="icon home" src="path/to/your/icon.png" /><span>LEAVE TYPE</span></a>
+               <div class="dropdown-content">
+                   <!-- Dropdown options -->
+                   <a href="{% url 'add_leave_type' %}">Add Leave Type</a>
+                   <a href="{% url 'manage_leave_type' %}">manage </a>
+                   <!-- Add more options as needed -->
+               </div>
+           </li>
+           
+           <li class="dropdown">
+               <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+                   <img class="icon mail" /><span>EMPLOYEE</span>
+               </a>
+               <ul class="dropdown-menu">
+                   <li><a href="{% url 'employee_type' %}">ADD Employees</a></li>
+                   <li><a href="{% url 'view_employee_type' %}">VIEW Employee</a></li>
+                   <!-- Add more dropdown options as needed -->
+               </ul>
+           </li>
+            <li>
+                <a><img class="icon user" /><span>SALARY</span></a>
+            </li>
+            <li>
+                <a><img class="icon file" /><span>LEAVE REQUEST</span></a>
+            </li>
+            <li>
+              <a><img class="icon file" /><span>REPORT</span></a>
+            </li>
+            <li>
+                <a href="/logout"><img class="icon file" /><span>LOGOUT</span></a>
+              </li>
+        </ul>
+       
+    </nav>
+    <main>
+        <header>
+            <input type="text" id="searchInput" class="icon2" placeholder="Search for department...">
+          
+            
+            <div class="section1">
+                <label for="itemsPerPage">select page:</label>
+                <select id="itemsPerPage">
+                    <option value="5">5</option>
+                    <option value="10">10</option>
+                    <option value="15">15</option>
+                    <!-- Add more options as needed -->
+                </select>
+            </div>
+            
+
+
+
+                   </header>
+                   <table>
+                    <thead>
+                        <tr>
+                            <th>SL.NO</th>
+                            <th>Department</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for department in departments %}
+                            <tr>
+                                <td>{{ forloop.counter }}</td>  <!-- SL.NO -->
+                                <td>{{ department.department_name }}</td>  <!-- Department -->
+                                <td> <!-- Actions - You can add your action buttons here -->
+                                    <!-- Example: Edit, Delete, and View Details buttons -->
+                                    <a href="{% url 'updatedepartment' department.id %}">
+                                        <i class="fas fa-edit nav-icon fa-lg"></i>
+                                     </a>
+                                     
+                                     <form method="post" action="{% url 'delete_department' department.id %}" style="display: inline;">
+                                        {% csrf_token %}
+                                        <button type="submit" class="icon-button">
+                                            <i class="fas fa-trash nav-icon fa-lg"></i>
+                                        </button>
+                                    </form>
+                                    
+                                    
+
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <div id="pagination-container"></div>
+           
+        </div>
+    </main>
+    <script>
+      var data = {
+    labels: ["Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov"],
+    datasets: [{
+        backgroundColor: "rgba(0,0,0,0)",
+        borderColor: "rgba(91,37,245, 1)",
+        borderWidth: 4.5,
+        data: [10.2, 10, 13, 12, 15, 13, 14.5, 11, 13.5, 13, 11],
+    }]
+};
+
+var options = {
+    maintainAspectRatio: false,
+    legend: {
+        display: false
+    },
+    scales: {
+        yAxes: [{
+            stacked: true,
+            gridLines: {
+                display: true,
+                color: "rgba(91,37,245, 0.03)"
+            },
+            ticks: {
+                maxTicksLimit: 5,
+                min: 9,
+                max: 16
+            }
+        }],
+        xAxes: [{
+            gridLines: {
+                display: false
+            }
+        }]
+    },
+    elements: {
+        point: {
+            radius: 0
+        }
+    }
+};
+
+
+var ctx = document.getElementById('exchangeRates').getContext('2d');
+var myLineChart = new Chart(ctx, {
+    type: 'line',
+    data: data,
+    options: options
+});
+
+/*LAST COSTS*/
+var data = {
+    labels: ["Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov"],
+    datasets: [{
+        label: 'Spending',
+        backgroundColor: "rgba(91,37,245, 0.2)",
+        data: [500, 300, 800, 150, 200, 150, 800, 200, 800, 100],
+    }, {
+        label: 'Arrival',
+        backgroundColor: "rgba(91,37,245, 1)",
+        data: [1000, 800, 1800, 1100, 1000, 800, 1800, 1600, 1800, 1200],
+    }, ]
+};
+
+var options = {
+    cornerRadius: 0,
+    maintainAspectRatio: false,
+    legend: {
+        position: 'bottom',
+        labels: {
+            fontColor: "rgba(0,0,0, 0.5)",
+            boxWidth: 20,
+            padding: 10
+        }
+    },
+    scales: {
+        yAxes: [{
+            gridLines: {
+                display: true,
+                color: "rgba(91,37,245, 0.03)"
+            },
+            ticks: {
+                maxTicksLimit: 5,
+            }
+        }],
+        xAxes: [{}]
+    }
+};
+
+
+var ctx = document.getElementById('last_costs').getContext('2d');
+var myLineChart = new Chart(ctx, {
+    type: 'bar',
+    data: data,
+    options: options
+});
+
+/*EFFICIENCY CHART*/
+
+var data = {
+    labels: ["Spend", "Earned"],
+    datasets: [{
+        label: "Population (millions)",
+        backgroundColor: ["rgba(91,37,245, 1)", "#dad7e9"],
+        data: [65, 35]
+    }]
+};
+
+var options = {
+    maintainAspectRatio: false,
+    legend: {
+        position: 'bottom',
+        labels: {
+            fontColor: "rgba(0,0,0, 0.5)",
+            boxWidth: 20,
+            padding: 10
+        }
+    },
+};
+
+
+var ctx = document.getElementById('efficiency').getContext('2d');
+var myLineChart = new Chart(ctx, {
+    type: 'doughnut',
+    data: data,
+    options: options
+});
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Get the input field and table
+            var input = document.getElementById('searchInput');
+            var table = document.querySelector('table');
+    
+            // Add an event listener to the input field
+            input.addEventListener('input', function () {
+                var filter = input.value.toLowerCase();
+                var rows = table.querySelectorAll('tbody tr');
+    
+                // Loop through all table rows and hide those that don't match the search query
+                rows.forEach(function (row) {
+                    var departmentName = row.querySelector('td:nth-child(2)').textContent.toLowerCase();
+                    if (departmentName.includes(filter)) {
+                        row.style.display = '';
+                    } else {
+                        row.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var table = document.querySelector('table');
+      var tableRows = table.querySelectorAll('tbody tr');
+      var pageSize = 5; // Default number of rows per page
+      var currentPage = 1;
+  
+      // Calculate the total number of pages
+      var pageCount = Math.ceil(tableRows.length / pageSize);
+  
+      // Display the first page by default
+      showPage(currentPage);
+  
+      // Generate next and previous buttons
+      generateNavigationButtons();
+  
+      // Generate items per page dropdown
+      generateItemsPerPageDropdown();
+  
+      // Function to display a specific page
+      function showPage(pageNumber) {
+        currentPage = pageNumber;
+        var startIndex = (pageNumber - 1) * pageSize;
+        var endIndex = startIndex + pageSize;
+  
+        // Hide all rows
+        tableRows.forEach(function (row) {
+          row.style.display = 'none';
+        });
+  
+        // Display rows for the current page
+        for (var i = startIndex; i < endIndex && i < tableRows.length; i++) {
+          tableRows[i].style.display = '';
+        }
+      }
+  
+      // Function to generate next and previous buttons
+      function generateNavigationButtons() {
+        var paginationContainer = document.getElementById('pagination-container');
+  
+        // Create "Previous" button
+        var prevButton = document.createElement('a');
+        prevButton.href = '#';
+        prevButton.textContent = 'Previous';
+        prevButton.addEventListener('click', function (event) {
+          event.preventDefault();
+          if (currentPage > 1) {
+            showPage(currentPage - 1);
+          }
+        });
+        paginationContainer.appendChild(prevButton);
+  
+        // Create "Next" button
+        var nextButton = document.createElement('a');
+        nextButton.href = '#';
+        nextButton.textContent = 'Next';
+        nextButton.addEventListener('click', function (event) {
+          event.preventDefault();
+          if (currentPage < pageCount) {
+            showPage(currentPage + 1);
+          }
+        });
+        paginationContainer.appendChild(nextButton);
+      }
+  
+      // Function to generate items per page dropdown
+      function generateItemsPerPageDropdown() {
+        var itemsPerPageDropdown = document.getElementById('itemsPerPage');
+  
+        itemsPerPageDropdown.addEventListener('change', function () {
+          pageSize = parseInt(itemsPerPageDropdown.value, 10);
+          pageCount = Math.ceil(tableRows.length / pageSize);
+          showPage(1);
+        });
+      }
+    });
+  </script>
+  
+
+</body>
+</html>
